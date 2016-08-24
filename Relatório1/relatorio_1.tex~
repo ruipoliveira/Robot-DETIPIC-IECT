@@ -1,0 +1,237 @@
+
+\documentclass[a4paper, 12pt, onecolumn, oneside]{report}
+
+\usepackage{geometry} 
+\geometry{a4paper} 
+\usepackage{graphicx} 
+\usepackage{float}
+\usepackage{wrapfig} 
+\usepackage{lipsum} 
+\usepackage  [utf8] {inputenc}
+\usepackage  [portuguese] {babel}
+\linespread{1.2}
+%\setlength\parindent{0pt} 
+\graphicspath{{./Pictures/}} 
+\usepackage{graphicx}
+\begin{document}
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % 
+
+\center 
+
+
+\begin{figure}[H] 
+\center{\includegraphics[width=1.0\linewidth]{ua}}
+\end{figure}
+
+
+\textsc{\ Departamento de Electrónica, Telecomunicações e Informática
+ }\\[0.9cm] 
+
+{\raggedright \textbf{Curso:} [8240] Mestrado Integrado em Eng. de Computadores e Telemática
+
+\textbf{Disciplina:} [47137] Introdução à Eng. de Computadores e Telemática
+
+\textbf{Ano lectivo:} 2012/2013 \\[1.5cm] 
+
+}
+
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Relatório da Aula Prática 8 \\
+[0.4cm]  
+Programação do Robô \\ [0.4cm] DETI PIC }\\[0.4cm] 
+\HRule \\[3.9cm]
+
+
+\begin{minipage}{0.4\textwidth} 
+\begin{flushleft} \large
+\emph{Autores:}\\
+{[68799] Bruno \textsc{Silva}} \\
+{[68799] Rui \textsc{Oliveira} } 
+
+
+\emph{Turma/Grupo:}\\
+T5B / Prática 3\\
+
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Docentes:} \\
+André \textsc{Zúquete} \\
+João \textsc{Barraca} \\
+\emph{Data:} \\
+\today 
+\end{flushright}
+\end{minipage}\\[2cm]
+
+
+
+\vfill 
+
+\end{titlepage}
+
+
+
+\vspace*{\fill}
+
+\textbf{Resumo:}
+
+
+\begin{flushleft}
+
+Pretende-se através deste relatório expor sob forma escrita, o nosso desempenho e objetivos alcançados na aula de Introdução à Engenharia de Computadores e Telemática. De modo a responder ao protocolo que nos foi estabelecido, programámos o robô DETI PIC, desenvolvido pelo Departamento de Eletrónica, Telecomunicações e Informática da Universidade de Aveiro, e com isso tentar de forma satisfatória atingir os objetivos principais do mesmo. 
+
+\end{flushleft}
+
+
+
+
+
+\vspace*{\fill}
+
+
+
+
+
+\tableofcontents 
+
+\newpage
+ 
+\section{Introdução} 
+
+
+Como sabemos, um robô é um dispositivo, ou conjunto de dispositivos, eletromecânicos ou biomecânicos capazes de realizar uma determinada funcionalidade de forma independente, para isso terá de ser pré-programado, ou então controlado por um ser humano. Primordialmente os robôs foram programados para desenvolver trabalhos de baixa complexidade, como por exemplo, deslocarem-se sobre superfícies planas, interagir com obstáculos, entre outros. Atualmente, os robôs realizam tarefas muito completas, e em muitos dos casos substituindo o trabalho humano. Embora, nem sempre se tira partido de todas as capacidades do robô.
+
+Neste relatório pretendemos demonstrar o nosso desempenho na programação do robô DETI PIC, desenvolvido pelo Departamento de Eletrónica, Telecomunicações e Informática da Universidade de Aveiro. Mais à frente iremos mostrar as principais características do robô, e alguns dos equipamentos e materiais que utilizámos para conseguir atingir os objetivos propostos. Para a programação de robô utilizando um software, também este desenvolvido pelo DETI, chamado \emph{DETInchanting} criado a partir de linguagem JAVA e C++ e adaptado do \emph{Enchanting}, desenvolvido para robôs da LEGO. Neste caso, necessitámos de ter conhecimentos básicos de programação em JAVA, para conseguir testar as capacidades do robô, através da implementação blocos que permitem executar operações do tipo: \emph{if}... \emph{else}...; \emph{forever}... ; \emph{repeat until}... ; entre outros. 
+
+Ambicionamos com estes testes ao robô, explorar os sensores de distância, tentar fazer com que este siga uma parede de modo a contorná-la, e também de conjugar o seguimento de uma parede com a deteção de linhas de cor preta localizadas, neste caso no tampo da mesa. 
+
+
+
+\newpage
+\section{Descrição do problema}
+
+Pretendemos através deste relatório dar resposta, programando e observando o comportamento do robô DETI PIC de modo a solucionar os seguintes problemas apresentados: 
+
+\textbf{PROBLEMA 1} - Programe o robô de forma a ele deslocar-se em frente até encontrar um obstáculo frontal a menos de 10 cm. Quando tal acontecer, o robô deverá parar e rodar sobre si mesmo, num qualquer sentido de rotação, até que essa distância aumente. Quando tal acontecer, o robô deverá continuar o seu movimento para diante. 
+
+\textbf{PROBLEMA 2} - Programe o robô para seguir uma parede, sempre com o mesmo lado voltado para a parede, sem nunca lhe tocar.
+
+\textbf{PROBLEMA 3} - Altere o programa anterior para detetar a presença de linhas pretas nos chãos perpendiculares à parede. Sempre que as detetar deverá parar durante algum tempo e sinalizar a sua deteção com os leds, após o que deve retomar o movimento anterior. 
+
+\textbf{PROBLEMA 4} - Altere o programa anterior para inverter o sentido de deslocamento sempre que encontrar uma linha preta perpendicular a uma parede, devendo a partir desso ponto seguir a parede mantendo o outro lado voltado para a mesma. 
+
+Para além dos quatro problemas acima descritos, pretendemos também adquirir alguns dos conhecimentos introdutórios do funcionamento e programação da robótica utilizando para isso o DETInchanting, programa este que iremos abordar mais à frente. Dado que nos foi imposto a realização deste relatório utilizando a linguagem tipo LaTeX, pretendemos também desenvolver as nossas competências a nível desta linguagem, alargando assim os nossos conhecimentos já adquiridos em aulas anteriores.   
+
+
+
+
+\newpage
+\section{Aparelhagem e equipamento}
+
+
+ \newpage
+\section{Procedimento}
+
+\section{Resultados}
+
+\section{Análise dos Resultados}
+
+\section{Conclusões}
+
+\section{Referências}
+
+Example citation 
+
+%------------------------------------------------
+
+\subsection{Subsection 1} % Sub-section
+
+
+texto 1 
+
+%------------------------------------------------
+
+\subsubsection{Subsubsection 1} % Sub-sub-section
+ texto 1  
+
+\begin{figure}[H] % Example image
+\center{\includegraphics[width=0.5\linewidth]{placeholder}}
+\caption{Example image.}
+\label{fig:speciation}
+\end{figure}
+
+%------------------------------------------------
+
+\subsubsection{Subsubsection 2} % Sub-sub-section
+
+\lipsum[4] % Dummy text
+
+%----------------------------------------------------------------------------------------
+%	MAJOR SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Content Section} % Major section
+
+\lipsum[5] % Dummy text
+
+%------------------------------------------------
+
+\subsection{Subsection 1} % Sub-section
+
+\subsubsection{Subsubsection 1} % Sub-sub-section
+
+\lipsum[6] % Dummy text
+
+%------------------------------------------------
+
+\subsubsection{Subsubsection 2} % Sub-sub-section
+
+\lipsum[6] % Dummy text
+\begin{wrapfigure}{l}{0.4\textwidth} % Inline image example
+  \begin{center}
+    \includegraphics[width=0.38\textwidth]{fish}
+  \end{center}
+  \caption{Fish}
+\end{wrapfigure}
+\lipsum[7-8] 
+
+
+\subsubsection{Subsubsection 3} 
+
+\begin{description} 
+
+\item[First] \hfill \\
+\lipsum[9] 
+
+\item[Second] \hfill \\
+\lipsum[10] 
+
+\item[Third] \hfill \\
+\lipsum[11] 
+
+\end{description} 
+
+
+
+\section{Conclusion} 
+
+
+
+
+\begin{thebibliography}{99} 
+
+\bibitem[Figueredo and Wolf, 2009]{Figueredo:2009dg}
+Figueredo, A.~J. and Wolf, P. S.~A. (2009).
+\newblock Assortative pairing and life history strategy - a cross-cultural
+  study.
+\newblock {\em Human Nature}, 20:317--330.
+ 
+\end{thebibliography}
+
+
+\end{document}
