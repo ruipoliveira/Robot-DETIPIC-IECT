@@ -1,6 +1,6 @@
 # Robot-DETIPIC-IECT
 
-Report of practical classes in latex
+Report of practical classes in latex (2012)
 
 ---
 ### Authors
